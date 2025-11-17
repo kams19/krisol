@@ -30,7 +30,7 @@
       scroll-behavior: smooth;
     }
     header {
-      background: #ffffff;
+      background: var(--header-bg);
       padding: 15px 20px;
       display: flex;
       justify-content: space-between;
@@ -39,6 +39,32 @@
       top: 0;
       z-index: 1000;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* MOBILE RESPONSIVE NAV */
+    .menu-toggle {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--text);
+    }
+    @media(max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--header-bg);
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+      }
+      nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     header img {
       max-width: 220px;
@@ -89,7 +115,8 @@
     .hero {
       text-align: center;
       padding: 100px 20px;
-      background: linear-gradient(135deg, var(--blue), var(--purple));
+      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('hero-bg.png') center/cover no-repeat;
+      animation: gradientMove 12s ease-in-out infinite alternate; color: white;
       color: white;
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
@@ -194,6 +221,138 @@
       background: var(--purple);
     }
 
+  /* Gradient animation */
+    @keyframes gradientMove {
+      0% { background-position: center top; }
+      50% { background-position: center center; }
+      100% { background-position: center bottom; }
+    }
+
+    /* Sticky Contact Bar for Mobile */
+    .mobile-contact {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--blue);
+      color: white;
+      text-align: center;
+      padding: 14px;
+      font-size: 18px;
+      font-weight: bold;
+      z-index: 9999;
+    }
+    @media(max-width: 768px) {
+      .mobile-contact { display: block; }
+    }
+
+  /* Section separators */
+    .separator {
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--orange), var(--purple), var(--blue), var(--green));
+      background-size: 400% 100%;
+      animation: separatorFlow 6s linear infinite;
+      border-radius: 4px;
+      margin: 40px 0;
+    }
+    @keyframes separatorFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+
+    /* Glowing border animation */
+    .card:hover {
+      box-shadow: 0 0 15px var(--purple), 0 0 30px var(--blue);
+    }
+
+    .hero {
+      position: relative;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      border: 4px solid transparent;
+      border-radius: 40px;
+      animation: heroGlow 4s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes heroGlow {
+      0% { box-shadow: 0 0 10px var(--purple); }
+      50% { box-shadow: 0 0 25px var(--blue); }
+      100% { box-shadow: 0 0 10px var(--green); }
+    }
+
+    /* Parallax scrolling */
+    .hero {
+      background-attachment: fixed;
+    }
+
+    /* Back to top button */
+    #topBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 20px;
+      padding: 12px 18px;
+      background: var(--blue);
+      color: white;
+      font-size: 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      display: none;
+      z-index: 9999;
+      transition: 0.3s;
+    }
+    #topBtn:hover {
+      background: var(--purple);
+    }
+
+  /* Cinematic fade-in delays */
+    section:nth-of-type(1){animation-delay:0.2s}
+    section:nth-of-type(2){animation-delay:0.4s}
+    section:nth-of-type(3){animation-delay:0.6s}
+    section:nth-of-type(4){animation-delay:0.8s}
+    section:nth-of-type(5){animation-delay:1s}
+
+    /* Soft parallax on service cards */
+    .card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+    .card:hover { transform: translateY(-12px) scale(1.02); }
+
+    /* Animated SVG wave footer */
+    .wave-container { position: relative; height: 120px; overflow: hidden; }
+    .wave-container svg { position: absolute; bottom: 0; width: 100%; animation: waveMove 8s linear infinite; }
+    @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* Animated SVG section dividers */
+    .svg-divider { width:100%; margin:40px 0; }
+
+  /* Auto light/dark mode based on system */
+    @media (prefers-color-scheme: dark) { body { --bg:#1a1a1a; --text:#e6e6e6; --card-bg:#2a2a2a;} }
+
+    /* Glassmorphism cards */
+    .card { backdrop-filter: blur(10px); background: rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.3);} 
+    body.dark .card { background: rgba(40,40,40,0.35); }
+
+    /* Page load intro */
+    #introMask {position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;color:white;font-size:32px;animation:introFade 2s forwards;}
+    @keyframes introFade { 0%{opacity:1;} 100%{opacity:0;visibility:hidden;} }
+
+    /* Chatbot floating button */
+    #chatBtn {position:fixed;bottom:90px;right:20px;padding:14px 20px;background:var(--purple);color:white;border-radius:50px;font-size:16px;cursor:pointer;z-index:9999;box-shadow:0 0 12px var(--blue);}    
+    #chatWindow {display:none;position:fixed;bottom:150px;right:20px;width:280px;height:350px;background:var(--card-bg);border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,0.4);padding:15px;z-index:9999;}
+
+    /* Typing animation */
+    .typed-text { border-right:3px solid white; white-space:nowrap; overflow:hidden; width:0; animation:typing 4s steps(40) forwards, blink .7s infinite; }
+    @keyframes typing { from{width:0;} to{width:100%;} }
+    @keyframes blink { 50%{border-color:transparent;} }
+
+    /* Scroll-jacking sections */
+    html { scroll-behavior: smooth; }
+    .snap { scroll-snap-align: start; }
+    body { scroll-snap-type: y mandatory; }
+
   </style>
 </head>
 </head>
@@ -201,6 +360,7 @@
 
   <header>
     <img src="KrisolLtd LOGO3.png" alt="Krisol Ltd Logo" />
+    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <nav>
       <span class="toggle" onclick="toggleMode()">🌙 Dark Mode</span>
       <a href="#home">Home</a>
@@ -211,12 +371,16 @@
     </nav>
   </header>
 
-  <section id="home" class="hero">
-    <h1>Welcome to Krisol Ltd</h1>
+  <section id="home" class="hero snap" class="hero">
+    <h1 class="gradient-text">Welcome to Krisol Ltd</h1>
+    <p class="typed-text">Bringing the World Closer Through Technology...</p>
     <p>Specialists in Network Architecture, Cloud Networking & Secure Enterprise Solutions</p>
   </section>
 
-  <section id="about">
+  <div class="svg-divider">
+<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+</div>
+  <section id="about" class="snap">
     <h2>About Krisol Ltd</h2>
     <p>
       Krisol Ltd delivers high-end IT consultancy specialising in Network Architecture, Cloud
@@ -227,19 +391,27 @@
     </p>
   </section>
 
-  <section id="services">
+  <div class="svg-divider">
+<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+</div>
+  <section id="services" class="snap">
     <h2>Services</h2>
     <div class="grid">
-      <div class="card"><div class="icon">🧩</div><strong>Network Architecture & Design</strong><br/>HLD, LLD, transformation planning, Azure/AWS network design and datacentre architecture. & Design</strong><br/>HLD, LLD, transformation planning, Azure/AWS network design and datacentre architecture.</div>
-      <div class="card"><div class="icon">☁️</div><strong>Cloud Networking</strong><br/>Azure, AWS, VPN, hybrid networks, secure connectivity and cloud migrations.</strong><br/>Azure, AWS, VPN, hybrid networks, secure connectivity and cloud migrations.</div>
-      <div class="card"><div class="icon">🏢</div><strong>Enterprise & Datacentre Networks</strong><br/>Cisco, Palo Alto, Fortinet, Juniper, SD-WAN, segmentation and secure access solutions.</strong><br/>Cisco, Palo Alto, Fortinet, Juniper, SD-WAN, segmentation and secure access solutions.</div>
-      <div class="card"><div class="icon">🔐</div><strong>Security & Firewall Architecture</strong><br/>Palo Alto, Firepower, FortiGate, SRX, Zero Trust and enterprise security hardening.</strong><br/>Palo Alto, Firepower, FortiGate, SRX, Zero Trust and enterprise security hardening.</div>
-      <div class="card"><div class="icon">📘</div><strong>Consultancy & Governance</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</div>
+      <div class="card"><lottie-player class="lottie-icon" src="https://assets1.lottiefiles.com/packages/lf20_2glqweqs.json" background="transparent" speed="1" loop autoplay></lottie-player>$1</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</div>
     </div>
   </section>
 
-  <section id="industries">
+  <div class="svg-divider">
+<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+</div>
+  <section id="industries" class="snap">
     <h2>Industries We Serve</h2>
+
+    <details class="industry-item"><summary>Government & Defence</summary><p>Experience with MoD, SC-cleared roles, secure architectures, datacentre migrations and cyber-hardened environments.</p></details>
+    <details class="industry-item"><summary>Finance & Banking</summary><p>Delivered FCA-grade secure networks, firewall governance, datacentre upgrades and cloud integrations.</p></details>
+    <details class="industry-item"><summary>Manufacturing & Industrial</summary><p>Designed low-latency, resilient enterprise networks supporting industrial automation and secure remote access.</p></details>
+    <details class="industry-item"><summary>Global IT Service Providers</summary><p>Architected scalable multi-vendor solutions including firewalls, SD-WAN, cloud networks and global VPN fabrics.</p></details>
+
     <div class="grid">
       <div class="card">Government & Defence</div>
       <div class="card">Finance & Banking</div>
@@ -248,7 +420,28 @@
     </div>
   </section>
 
-  <section id="contact">
+  <section id="case-studies">
+    <h2>Case Studies & Experience</h2>
+
+    <div class="slider" id="slider">
+      <div class="slides" id="slides">
+        <div class="slide"><h3>MoD – Next Generation Communication Network</h3><p>Produced HLDs, roadmaps and architectural governance for Defence Digital. Peer-reviewed cross-domain architectures.</p></div>
+        <div class="slide"><h3>Magnox – Azure Migration & Network Modernisation</h3><p>Designed cloud-first network, VPN gateways, firewall upgrades and multi-vendor site-to-site integrations.</p></div>
+        <div class="slide"><h3>FCA – Secure Datacentre Transformation</h3><p>Delivered designs for ExaCC, VDI migration, SIEM upgrades and secure firewalls (Checkpoint, Palo Alto, Cisco).</p></div>
+        <div class="slide"><h3>HM Passport Office – AWS Integrated Sites</h3><p>Architected two new sites, full network lifecycle delivery, firewall modernisation and secure cloud connectivity.</p></div>
+      </div>
+    </div>
+
+    <div class="slider-buttons">
+      <button onclick="prevSlide()">⟨ Prev</button>
+      <button onclick="nextSlide()">Next ⟩</button>
+    </div>
+  </section>
+
+  <div class="svg-divider">
+<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+</div>
+  <section id="contact" class="snap">
     <h2>Contact Us</h2>
     <form action="https://formsubmit.co/info@krisol.co.uk" method="POST">
       <input type="text" name="name" placeholder="Your Name" required />
@@ -258,11 +451,18 @@
     </form>
     <p style="text-align:center; margin-top:20px;">
       Email: <strong>info@krisol.co.uk</strong><br/>
-      Contact No: <strong>+44 7536 55 3208</strong>
-    </p>
+      </p>
   </section>
 
-  <footer>
+  <div class="mobile-contact"><a href="mailto:info@krisol.co.uk" style="color:white;text-decoration:none;">📩 Contact Now</a></div>
+
+  <div class="wave-container">
+<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C300,100 900,20 1200,80 V120 H0 V0 Z" fill="var(--blue)"></path></svg>
+</div>
+<div id="introMask">Krisol Ltd</div>
+<div id="chatWindow">Ask Krisol: <br><br><em>This can be linked to a real chatbot later.</em></div>
+<div id="chatBtn" onclick="toggleChat()">💬 Ask Krisol</div>
+<footer>
     © 2025 Krisol Ltd – Bringing the World Closer
   </footer>
 
@@ -284,5 +484,88 @@
         document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
     }
   </script>
+<script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
+
+    // Light/Dark mode
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      document.querySelector('.toggle').textContent =
+        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+<script>
+    /* Lightweight Analytics - Page View Counter */
+    fetch('https://api.countapi.xyz/hit/krisol.co.uk/visits')
+      .then(res => res.json())
+      .then(data => console.log('Page views:', data.value));
+
+    // Mobile menu toggle
+    function toggleMenu() {
+      document.querySelector('nav').classList.toggle('show');
+    }
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
+
+    // Light/Dark mode
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      document.querySelector('.toggle').textContent =
+        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
+<script>
+    let index = 0;
+    function showSlide(i){ const slides=document.getElementById('slides'); const count=slides.children.length; if(i>=count) index=0; else if(i<0) index=count-1; else index=i; slides.style.transform='translateX('+(-index*100)+'%)'; }
+    function nextSlide(){ showSlide(index+1); }
+    function prevSlide(){ showSlide(index-1); }
+
+    const businessSchema = {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Krisol Ltd",
+      "url": "https://krisol.co.uk",
+      "logo": "https://krisol.co.uk/favicon-512.png",
+      "description": "IT consultancy specialising in Network Architecture, Cloud Networking, Cyber Security and Enterprise Infrastructure.",
+      "email": "info@krisol.co.uk",
+      "address": {"@type": "PostalAddress","addressCountry": "UK"}
+    };
+    const script = document.createElement('script'); script.type='application/ld+json'; script.textContent = JSON.stringify(businessSchema); document.head.appendChild(script);
+  </script>
+<button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});">⬆</button>
+
+<script>
+  // Show back-to-top button
+  window.addEventListener('scroll', () => {
+    const btn = document.getElementById('topBtn');
+    if (window.scrollY > 300) btn.style.display = 'block';
+    else btn.style.display = 'none';
+  });
+</script>
+<script>
+function toggleChat(){
+ const w=document.getElementById('chatWindow');
+ w.style.display = w.style.display==='none' ? 'block' : 'none';
+}
+</script>
 </body>
 </html>
