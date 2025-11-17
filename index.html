@@ -4,6 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Krisol Ltd – Bringing the World Closer</title>
+
+  <!-- SEO META TAGS -->
+  <meta name="description" content="Krisol Ltd – Specialist IT consultancy delivering Network Architecture, Cloud Solutions, Cyber Security, and Enterprise Infrastructure for Government, Finance, Manufacturing and Global IT Service Providers." />
+  <meta name="keywords" content="Network Architect, IT Consultant, Cloud Networking, Cyber Security, Azure, AWS, Datacentre, Krisol Ltd" />
+  <meta property="og:title" content="Krisol Ltd – Bringing the World Closer" />
+  <meta property="og:description" content="High‑end IT consultancy specialising in Network Architecture, Cloud, Cyber Security and Enterprise Infrastructure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://krisol.co.uk" />
+  <meta property="og:image" content="/favicon-512.png" />
+
+  <!-- FAVICONS -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+
   <style>
     body {
       margin: 0;
@@ -30,47 +46,70 @@
     nav a {
       margin: 0 12px;
       text-decoration: none;
-      color: #333;
+      color: #444;
       font-weight: bold;
+      transition: 0.3s;
     }
     nav a:hover {
       color: #0077ff;
     }
+
+    /* NEW COLOUR THEME (MATCHING RAINBOW LOGO) */
+    :root {
+      --blue: #0077ff;
+      --purple: #8a2be2;
+      --green: #00b894;
+      --orange: #fd9644;
+      --pink: #ff6b81;
+    }
+
     section {
       padding: 70px 20px;
       max-width: 1100px;
       margin: auto;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateY(30px);
       animation: fadeIn 1s forwards;
     }
     @keyframes fadeIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
+
+    /* Smooth scroll animations */
+    .animate {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease-out;
+    }
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .hero {
       text-align: center;
       padding: 100px 20px;
-      background: white;
-      animation-delay: 0.2s;
+      background: linear-gradient(135deg, var(--blue), var(--purple));
+      color: white;
+      border-bottom-left-radius: 40px;
+      border-bottom-right-radius: 40px;
     }
     .hero h1 {
       font-size: 42px;
       margin-bottom: 10px;
-      color: #222;
     }
     .hero p {
       font-size: 20px;
-      color: #555;
+      opacity: 0.9;
     }
+
     h2 {
       font-size: 30px;
       margin-bottom: 20px;
       text-align: center;
       color: #333;
     }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -80,40 +119,15 @@
       background: white;
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      border-top: 6px solid #0077ff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      border-top: 6px solid var(--blue);
       transition: transform 0.3s;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      border-color: var(--green);
     }
-    form {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-      max-width: 600px;
-      margin: auto;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    button {
-      padding: 12px 20px;
-      background: #0077ff;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 6px;
-    }
-    button:hover {
-      background: #005fcc;
-    }
+
     footer {
       text-align: center;
       background: #222;
@@ -121,13 +135,74 @@
       padding: 20px;
       margin-top: 40px;
     }
+  /* LIGHT/DARK MODE */
+    :root {
+      --bg: #f7f7f7;
+      --text: #222;
+      --card-bg: #ffffff;
+      --header-bg: #ffffff;
+      --footer-bg: #222;
+      --footer-text: #ffffff;
+    }
+    body.dark {
+      --bg: #1a1a1a;
+      --text: #e6e6e6;
+      --card-bg: #2a2a2a;
+      --header-bg: #111;
+      --footer-bg: #000;
+      --footer-text: #ccc;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      background: var(--header-bg);
+    }
+    footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+    }
+    .card {
+      background: var(--card-bg);
+    }
+
+    /* Animated ICONS */
+    .icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+      color: var(--blue);
+      transition: 0.3s;
+    }
+    .card:hover .icon {
+      transform: scale(1.15) rotate(5deg);
+      color: var(--green);
+    }
+
+    /* Toggle Button */
+    .toggle {
+      cursor: pointer;
+      padding: 8px 14px;
+      border-radius: 20px;
+      background: var(--blue);
+      color: white;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+    .toggle:hover {
+      background: var(--purple);
+    }
+
   </style>
+</head>
 </head>
 <body>
 
   <header>
     <img src="KrisolLtd LOGO3.png" alt="Krisol Ltd Logo" />
     <nav>
+      <span class="toggle" onclick="toggleMode()">🌙 Dark Mode</span>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#services">Services</a>
@@ -155,11 +230,11 @@
   <section id="services">
     <h2>Services</h2>
     <div class="grid">
-      <div class="card"><strong>Network Architecture & Design</strong><br/>HLD, LLD, transformation planning, Azure/AWS network design and datacentre architecture.</div>
-      <div class="card"><strong>Cloud Networking</strong><br/>Azure, AWS, VPN, hybrid networks, secure connectivity and cloud migrations.</div>
-      <div class="card"><strong>Enterprise & Datacentre Networks</strong><br/>Cisco, Palo Alto, Fortinet, Juniper, SD-WAN, segmentation and secure access solutions.</div>
-      <div class="card"><strong>Security & Firewall Architecture</strong><br/>Palo Alto, Firepower, FortiGate, SRX, Zero Trust and enterprise security hardening.</div>
-      <div class="card"><strong>Consultancy & Governance</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</div>
+      <div class="card"><div class="icon">🧩</div><strong>Network Architecture & Design</strong><br/>HLD, LLD, transformation planning, Azure/AWS network design and datacentre architecture. & Design</strong><br/>HLD, LLD, transformation planning, Azure/AWS network design and datacentre architecture.</div>
+      <div class="card"><div class="icon">☁️</div><strong>Cloud Networking</strong><br/>Azure, AWS, VPN, hybrid networks, secure connectivity and cloud migrations.</strong><br/>Azure, AWS, VPN, hybrid networks, secure connectivity and cloud migrations.</div>
+      <div class="card"><div class="icon">🏢</div><strong>Enterprise & Datacentre Networks</strong><br/>Cisco, Palo Alto, Fortinet, Juniper, SD-WAN, segmentation and secure access solutions.</strong><br/>Cisco, Palo Alto, Fortinet, Juniper, SD-WAN, segmentation and secure access solutions.</div>
+      <div class="card"><div class="icon">🔐</div><strong>Security & Firewall Architecture</strong><br/>Palo Alto, Firepower, FortiGate, SRX, Zero Trust and enterprise security hardening.</strong><br/>Palo Alto, Firepower, FortiGate, SRX, Zero Trust and enterprise security hardening.</div>
+      <div class="card"><div class="icon">📘</div><strong>Consultancy & Governance</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</div>
     </div>
   </section>
 
@@ -191,5 +266,23 @@
     © 2025 Krisol Ltd – Bringing the World Closer
   </footer>
 
+<script>
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
+
+    function toggleMode() {
+      document.body.classList.toggle('dark');
+      document.querySelector('.toggle').textContent =
+        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+    }
+  </script>
 </body>
 </html>
