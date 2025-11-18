@@ -351,7 +351,7 @@
     /* Scroll-jacking sections */
     html { scroll-behavior: smooth; }
     .snap { scroll-snap-align: start; }
-    body { scroll-snap-type: y mandatory; }
+    body { /* scroll snap removed */ }
 
   </style>
 </head>
@@ -359,7 +359,7 @@
 <body>
 
   <header>
-    <img src="KrisolLtd LOGO3.png" alt="Krisol Ltd Logo" />
+    <img src="KrisolLtd LOGO3.png" alt="Krisol Ltd Logo" style="max-width:140px;" />
     <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <nav>
       <span class="toggle" onclick="toggleMode()">🌙 Dark Mode</span>
@@ -371,10 +371,9 @@
     </nav>
   </header>
 
-  <section id="home" class="hero snap" class="hero">
-    <h1 class="gradient-text">Welcome to Krisol Ltd</h1>
-    <p class="typed-text">Bringing the World Closer Through Technology...</p>
-    <p>Specialists in Network Architecture, Cloud Networking & Secure Enterprise Solutions</p>
+  <section id="home" class="hero" style="padding:80px 20px; background:white; border-bottom:none; background-attachment:initial;">
+    <h1 class="gradient-text" style="font-size:36px; margin-bottom:10px;">Krisol Ltd</h1>
+    <p style="font-size:20px; color:#555; margin-top:0;">Bringing the World Closer Through Technology</p>
   </section>
 
   <div class="svg-divider">
