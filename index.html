@@ -1,570 +1,1243 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Krisol Ltd – Bringing the World Closer</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krisol Ltd – Specialist IT Consultancy</title>
+<meta name="description" content="Krisol Ltd – Senior-led IT consultancy specialising in Network Architecture, Cloud, Cybersecurity, and Enterprise Infrastructure for Government, Finance, Manufacturing, and Global IT Service Providers.">
+<meta property="og:title" content="Krisol Ltd – Specialist IT Consultancy">
+<meta property="og:url" content="https://krisol.co.uk">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+/* ── THEME VARIABLES ─────────────────────────────── */
+:root {
+  --bg:          #FAFAF7;
+  --bg-2:        #F2F0EA;
+  --bg-3:        #E8E5DE;
+  --text:        #1A1916;
+  --text-2:      #5C5A53;
+  --text-3:      #9A9890;
+  --accent:      #1B6B5E;
+  --accent-2:    #145047;
+  --accent-tint: #EBF4F2;
+  --accent-mid:  rgba(27,107,94,0.12);
+  --border:      rgba(26,25,22,0.10);
+  --border-2:    rgba(26,25,22,0.06);
+  --shadow:      0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  --serif:       'Cormorant Garamond', Georgia, serif;
+  --sans:        'DM Sans', system-ui, sans-serif;
+  --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+}
+[data-theme="dark"] {
+  --bg:          #111110;
+  --bg-2:        #1A1916;
+  --bg-3:        #232320;
+  --text:        #F0EDE7;
+  --text-2:      #918E88;
+  --text-3:      #555350;
+  --accent:      #2BA898;
+  --accent-2:    #38C4B2;
+  --accent-tint: rgba(43,168,152,0.08);
+  --accent-mid:  rgba(43,168,152,0.15);
+  --border:      rgba(240,237,231,0.09);
+  --border-2:    rgba(240,237,231,0.05);
+  --shadow:      0 1px 3px rgba(0,0,0,0.3), 0 4px 16px rgba(0,0,0,0.2);
+}
 
-  <!-- SEO META TAGS -->
-  <meta name="description" content="Krisol Ltd – Specialist IT consultancy delivering Network Architecture, Cloud Solutions, Cyber Security, and Enterprise Infrastructure for Government, Finance, Manufacturing and Global IT Service Providers." />
-  <meta name="keywords" content="Network Architect, IT Consultant, Cloud Networking, Cyber Security, Azure, AWS, Datacentre, Krisol Ltd" />
-  <meta property="og:title" content="Krisol Ltd – Bringing the World Closer" />
-  <meta property="og:description" content="High‑end IT consultancy specialising in Network Architecture, Cloud, Cyber Security and Enterprise Infrastructure." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://krisol.co.uk" />
-  <meta property="og:image" content="/favicon-512.png" />
+/* ── RESET + BASE ────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background 0.3s, color 0.3s;
+}
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--sans); cursor: pointer; }
 
-  <!-- FAVICONS -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
+/* ── TYPOGRAPHY ─────────────────────────────────── */
+.label {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--accent); font-weight: 400;
+}
+.label::before { content: ''; display: block; width: 1.5rem; height: 1px; background: var(--accent); flex-shrink: 0; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 300; line-height: 1.08; letter-spacing: -0.01em; }
+h1 { font-size: clamp(2.6rem, 5vw, 4.4rem); }
+h2 { font-size: clamp(2rem, 3.5vw, 3rem); }
+h3 { font-size: 1.4rem; }
+.serif-em { font-style: italic; color: var(--accent); }
+p { font-size: 1rem; color: var(--text-2); line-height: 1.8; }
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #222;
-      background: #f7f7f7;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: var(--header-bg);
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
+/* ── LAYOUT ─────────────────────────────────────── */
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 4rem; }
+section { position: relative; }
 
-    /* MOBILE RESPONSIVE NAV */
-    .menu-toggle {
-      display: none;
-      font-size: 26px;
-      cursor: pointer;
-      color: var(--text);
-    }
-    @media(max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: var(--header-bg);
-        width: 100%;
-        text-align: center;
-        padding: 20px 0;
-      }
-      nav.show {
-        display: flex;
-      }
-      .menu-toggle {
-        display: block;
-      }
-    }
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    header img {
-      max-width: 220px;
-    }
-    nav a {
-      margin: 0 12px;
-      text-decoration: none;
-      color: #444;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    nav a:hover {
-      color: #0077ff;
-    }
+/* ── BUTTONS ─────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.6rem;
+  font-family: var(--sans); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.85rem 1.8rem;
+  transition: all 0.25s var(--ease);
+  cursor: pointer; border: none;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+}
+.btn-primary:hover { background: var(--accent-2); gap: 0.9rem; }
+.btn-outline {
+  background: transparent; color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+.arrow { font-size: 1rem; line-height: 1; }
 
-    /* NEW COLOUR THEME (MATCHING RAINBOW LOGO) */
-    :root {
-      --blue: #0077ff;
-      --purple: #8a2be2;
-      --green: #00b894;
-      --orange: #fd9644;
-      --pink: #ff6b81;
-    }
+/* ── NAV ─────────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  transition: background 0.4s var(--ease), border-color 0.4s, backdrop-filter 0.4s;
+  border-bottom: 1px solid transparent;
+}
+#nav.scrolled {
+  background: rgba(250,250,247,0.92);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+}
+[data-theme="dark"] #nav.scrolled {
+  background: rgba(17,17,16,0.92);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.4rem 4rem;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.75rem; }
+.nav-brand img { height: 32px; width: auto; }
+.nav-mark {
+  width: 28px; height: 28px;
+  display: none; /* shown by onerror fallback */
+}
+.nav-wordmark {
+  font-family: var(--serif); font-size: 1.25rem; font-weight: 500;
+  color: var(--text); letter-spacing: 0.04em;
+}
+.nav-wordmark .dot { color: var(--accent); }
+.nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-2); transition: color 0.2s; font-weight: 400;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.theme-btn {
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+  background: transparent; display: flex; align-items: center; justify-content: center;
+  color: var(--text-2); transition: border-color 0.2s, color 0.2s; font-size: 0.9rem;
+}
+.theme-btn:hover { border-color: var(--accent); color: var(--accent); }
+.nav-cta { padding: 0.6rem 1.4rem; }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; padding: 4px; }
+.nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--text-2); transition: 0.3s; }
+.nav-mobile-overlay {
+  display: none; position: fixed; inset: 0; z-index: 199;
+  background: var(--bg); flex-direction: column; align-items: center;
+  justify-content: center; gap: 2rem;
+}
+.nav-mobile-overlay.open { display: flex; }
+.nav-mobile-overlay a {
+  font-family: var(--serif); font-size: 2rem; font-weight: 300;
+  color: var(--text); letter-spacing: 0.08em; transition: color 0.2s;
+}
+.nav-mobile-overlay a:hover { color: var(--accent); }
+.nav-close {
+  position: absolute; top: 1.5rem; right: 2rem;
+  background: none; border: none; font-size: 1.5rem; color: var(--text-2); cursor: pointer;
+}
 
-    section {
-      padding: 70px 20px;
-      max-width: 1100px;
-      margin: auto;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeIn 1s forwards;
-    }
-    @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* ── HERO ─────────────────────────────────────────── */
+#hero {
+  min-height: 100vh; padding-top: 7rem;
+  display: flex; flex-direction: column; justify-content: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.hero-inner {
+  display: grid; grid-template-columns: 55fr 45fr;
+  align-items: center; gap: 4rem;
+  padding: 4rem 4rem 3rem; max-width: 1160px; margin: 0 auto; width: 100%;
+}
+.hero-label { margin-bottom: 2rem; }
+.hero-h1 {
+  font-family: var(--serif); font-weight: 300;
+  font-size: clamp(2.6rem, 4.8vw, 4.4rem);
+  line-height: 1.06; letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+}
+.hero-h1 em { font-style: italic; color: var(--accent); }
+.hero-sub {
+  font-size: 1.05rem; color: var(--text-2);
+  max-width: 28rem; line-height: 1.85; margin-bottom: 2.5rem;
+}
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-visual {
+  position: relative; height: 420px;
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-visual svg { width: 100%; height: 100%; }
+.hero-trust {
+  max-width: 1160px; margin: 0 auto; width: 100%;
+  padding: 0 4rem 3rem;
+  display: flex; gap: 3rem; flex-wrap: wrap;
+  border-top: 1px solid var(--border); padding-top: 2rem; margin-top: 1rem;
+}
+.hero-trust-item {
+  display: flex; align-items: center; gap: 0.75rem;
+  font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-3); font-weight: 400;
+}
+.hero-trust-item::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
 
-    /* Smooth scroll animations */
-    .animate {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease-out;
-    }
-    .animate.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* ── MARQUEE ─────────────────────────────────────── */
+.marquee {
+  border-bottom: 1px solid var(--border); padding: 0.9rem 0;
+  overflow: hidden; background: var(--bg-2);
+}
+.marquee-track { display: flex; width: max-content; animation: marquee 35s linear infinite; }
+.marquee-item {
+  white-space: nowrap; padding: 0 2.5rem;
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-3); display: flex; align-items: center; gap: 2.5rem;
+}
+.marquee-item::after { content: '·'; color: var(--accent); }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    .hero {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('hero-bg.png') center/cover no-repeat;
-      animation: gradientMove 12s ease-in-out infinite alternate; color: white;
-      color: white;
-      border-bottom-left-radius: 40px;
-      border-bottom-right-radius: 40px;
-    }
-    .hero h1 {
-      font-size: 42px;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      font-size: 20px;
-      opacity: 0.9;
-    }
+/* ── SERVICES ────────────────────────────────────── */
+#services { padding: 7rem 0; border-bottom: 1px solid var(--border); }
+.section-header {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: end; margin-bottom: 5rem;
+}
+.section-header-right p { font-size: 1rem; line-height: 1.85; }
+.service-list { border-top: 1px solid var(--border); }
+.service-item {
+  display: grid; grid-template-columns: 3rem 1fr 1fr;
+  gap: 2.5rem; align-items: start;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+  cursor: default;
+}
+.service-item:hover { background: var(--accent-tint); }
+@media (min-width: 1025px) {
+  .service-item:hover { margin: 0 -4rem; padding-left: 4rem; padding-right: 4rem; }
+}
+.service-num {
+  font-family: var(--serif); font-size: 0.9rem; font-style: italic;
+  color: var(--accent); padding-top: 0.15rem;
+}
+.service-name {
+  font-family: var(--serif); font-size: 1.5rem; font-weight: 400; line-height: 1.2;
+  color: var(--text);
+}
+.service-desc { font-size: 0.9rem; color: var(--text-2); line-height: 1.8; padding-top: 0.2rem; }
 
-    h2 {
-      font-size: 30px;
-      margin-bottom: 20px;
-      text-align: center;
-      color: #333;
-    }
+/* ── SECTORS ─────────────────────────────────────── */
+#sectors { padding: 7rem 0; border-bottom: 1px solid var(--border); background: var(--bg-2); }
+.sectors-header { margin-bottom: 4rem; }
+.sectors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.sector-card {
+  background: var(--bg-2); padding: 2.5rem 2rem;
+  transition: background 0.3s;
+  position: relative; overflow: hidden;
+}
+.sector-card::after {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--accent); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.sector-card:hover { background: var(--bg); }
+.sector-card:hover::after { transform: scaleX(1); }
+.sector-num { font-family: var(--serif); font-size: 2.5rem; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 1.5rem; }
+.sector-name { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 1rem; color: var(--text); }
+.sector-desc { font-size: 0.86rem; color: var(--text-2); line-height: 1.8; }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      border-top: 6px solid var(--blue);
-      transition: transform 0.3s;
-    }
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: var(--green);
-    }
+/* ── WHY US ──────────────────────────────────────── */
+#why { padding: 7rem 0; border-bottom: 1px solid var(--border); }
+.why-inner {
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 8rem; align-items: start;
+}
+.why-left { position: sticky; top: 8rem; }
+.why-eyebrow { margin-bottom: 1.5rem; }
+.why-title {
+  font-family: var(--serif); font-size: clamp(2.2rem, 3.5vw, 3rem);
+  font-weight: 300; line-height: 1.08; margin-bottom: 2rem;
+}
+.why-intro { font-size: 1rem; color: var(--text-2); line-height: 1.85; }
+.why-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+.why-item {
+  padding: 1.75rem 0; border-bottom: 1px solid var(--border);
+  display: grid; grid-template-columns: 2.5rem 1fr; gap: 1.5rem;
+}
+.why-item-num {
+  font-family: var(--serif); font-size: 1rem; font-style: italic;
+  color: var(--accent); padding-top: 0.1rem; font-weight: 400;
+}
+.why-item-title { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.4rem; color: var(--text); }
+.why-item-body { font-size: 0.88rem; color: var(--text-2); line-height: 1.75; }
 
-    footer {
-      text-align: center;
-      background: #222;
-      color: white;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  /* LIGHT/DARK MODE */
-    :root {
-      --bg: #f7f7f7;
-      --text: #222;
-      --card-bg: #ffffff;
-      --header-bg: #ffffff;
-      --footer-bg: #222;
-      --footer-text: #ffffff;
-    }
-    body.dark {
-      --bg: #1a1a1a;
-      --text: #e6e6e6;
-      --card-bg: #2a2a2a;
-      --header-bg: #111;
-      --footer-bg: #000;
-      --footer-text: #ccc;
-    }
+/* ── DELIVERY APPROACH ───────────────────────────── */
+#approach { padding: 7rem 0; border-bottom: 1px solid var(--border); background: var(--bg-2); }
+.approach-header { margin-bottom: 5rem; }
+.approach-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative;
+}
+.approach-steps::before {
+  content: ''; position: absolute;
+  top: 1.6rem; left: calc(100%/8); right: calc(100%/8);
+  height: 1px; background: var(--border);
+}
+.step { padding: 0 2rem 0 0; }
+.step-num {
+  width: 3.5rem; height: 3.5rem; border-radius: 50%;
+  border: 1px solid var(--border); background: var(--bg-2);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 1rem; font-style: italic;
+  color: var(--accent); margin-bottom: 1.75rem;
+  position: relative; z-index: 1;
+}
+.step-name { font-family: var(--serif); font-size: 1.3rem; font-weight: 400; margin-bottom: 0.75rem; color: var(--text); }
+.step-desc { font-size: 0.86rem; color: var(--text-2); line-height: 1.8; }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-    }
-    header {
-      background: var(--header-bg);
-    }
-    footer {
-      background: var(--footer-bg);
-      color: var(--footer-text);
-    }
-    .card {
-      background: var(--card-bg);
-    }
+/* ── CASE STUDIES ────────────────────────────────── */
+#cases { padding: 7rem 0; border-bottom: 1px solid var(--border); }
+.cases-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 4rem; }
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.25rem;
+}
+.case-card {
+  background: var(--bg-2); border: 1px solid var(--border);
+  transition: border-color 0.3s, transform 0.4s var(--ease);
+  overflow: hidden;
+}
+.case-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+.case-card.span-7 { grid-column: span 7; }
+.case-card.span-5 { grid-column: span 5; }
+.case-card.span-6 { grid-column: span 6; }
+.case-vis {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--border); overflow: hidden; position: relative;
+}
+.case-body { padding: 1.75rem; }
+.case-sector {
+  font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 0.4rem;
+}
+.case-client {
+  font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--text-3); margin-bottom: 0.6rem;
+}
+.case-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 400; line-height: 1.25; margin-bottom: 0.75rem; color: var(--text); }
+.case-card.span-7 .case-title { font-size: 1.4rem; }
+.case-desc { font-size: 0.84rem; color: var(--text-2); line-height: 1.75; }
 
-    /* Animated ICONS */
-    .icon {
-      font-size: 40px;
-      margin-bottom: 10px;
-      color: var(--blue);
-      transition: 0.3s;
-    }
-    .card:hover .icon {
-      transform: scale(1.15) rotate(5deg);
-      color: var(--green);
-    }
+/* ── TESTIMONIALS ────────────────────────────────── */
+#testimonials { padding: 7rem 0; border-bottom: 1px solid var(--border); background: var(--bg-2); }
+.testi-header { margin-bottom: 5rem; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.testi-card {
+  background: var(--bg); padding: 2.5rem; border: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.testi-quote {
+  font-family: var(--serif); font-size: 1.15rem; font-weight: 300; font-style: italic;
+  line-height: 1.65; color: var(--text);
+}
+.testi-quote::before { content: '\201C'; color: var(--accent); font-size: 1.5rem; line-height: 0; }
+.testi-attr { margin-top: auto; }
+.testi-name { font-size: 0.82rem; font-weight: 500; color: var(--text); }
+.testi-role { font-size: 0.78rem; color: var(--text-3); letter-spacing: 0.04em; }
 
-    /* Toggle Button */
-    .toggle {
-      cursor: pointer;
-      padding: 8px 14px;
-      border-radius: 20px;
-      background: var(--blue);
-      color: white;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-    .toggle:hover {
-      background: var(--purple);
-    }
+/* ── ABOUT ───────────────────────────────────────── */
+#about { padding: 7rem 0; border-bottom: 1px solid var(--border); }
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start;
+}
+.about-right .about-heading {
+  font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 300; line-height: 1.1; margin-bottom: 2rem;
+}
+.about-right p { margin-bottom: 1.5rem; }
+.about-credentials {
+  margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+}
+.cred-item-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); margin-bottom: 0.25rem; }
+.cred-item-value { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; color: var(--accent); line-height: 1; }
+.about-left-inner {
+  position: sticky; top: 8rem; display: flex; flex-direction: column; gap: 2rem;
+}
+.about-logo-wrap img { height: 40px; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.about-tag {
+  font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.35rem 0.9rem; border: 1px solid var(--border); color: var(--text-2);
+}
 
-  /* Gradient animation */
-    @keyframes gradientMove {
-      0% { background-position: center top; }
-      50% { background-position: center center; }
-      100% { background-position: center bottom; }
-    }
+/* ── CONTACT ─────────────────────────────────────── */
+#contact { padding: 7rem 0; }
+.contact-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8rem; align-items: start;
+}
+.contact-heading {
+  font-family: var(--serif); font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 300; line-height: 1.08; margin-bottom: 1.5rem;
+}
+.contact-sub { font-size: 1rem; color: var(--text-2); line-height: 1.85; margin-bottom: 3rem; }
+.contact-detail-row {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  padding: 1.1rem 0; border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.contact-detail-row:last-child { border-bottom: 1px solid var(--border); }
+.contact-detail-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-3); min-width: 4.5rem; padding-top: 0.1rem; }
+.contact-detail-val { color: var(--text-2); }
+.contact-detail-val a { transition: color 0.2s; }
+.contact-detail-val a:hover { color: var(--accent); }
+.contact-reassure {
+  margin-top: 3rem; padding: 1.5rem;
+  background: var(--accent-tint); border-left: 3px solid var(--accent);
+  font-size: 0.88rem; color: var(--text-2); line-height: 1.75; font-style: italic;
+}
 
-    /* Sticky Contact Bar for Mobile */
-    .mobile-contact {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--blue);
-      color: white;
-      text-align: center;
-      padding: 14px;
-      font-size: 18px;
-      font-weight: bold;
-      z-index: 9999;
-    }
-    @media(max-width: 768px) {
-      .mobile-contact { display: block; }
-    }
+/* FORM */
+.contact-form { display: flex; flex-direction: column; }
+.form-wrap { border: 1px solid var(--border); padding: 0 1.5rem; }
+.form-row { position: relative; }
+.form-row + .form-row { border-top: 1px solid var(--border); }
+.form-row label { display: block; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); padding: 1.1rem 0 0.3rem; }
+.form-row input, .form-row textarea, .form-row select {
+  width: 100%; background: transparent; border: none; outline: none;
+  font-family: var(--sans); font-size: 0.95rem; font-weight: 300;
+  color: var(--text); padding: 0 0 1.1rem; resize: none; appearance: none;
+}
+.form-row textarea { min-height: 90px; line-height: 1.6; }
+.form-row select option { background: var(--bg); color: var(--text); }
+.form-footer { margin-top: 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.form-note { font-size: 0.75rem; color: var(--text-3); }
 
-  /* Section separators */
-    .separator {
-      width: 100%;
-      height: 6px;
-      background: linear-gradient(90deg, var(--orange), var(--purple), var(--blue), var(--green));
-      background-size: 400% 100%;
-      animation: separatorFlow 6s linear infinite;
-      border-radius: 4px;
-      margin: 40px 0;
-    }
-    @keyframes separatorFlow {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
-    }
+/* ── FOOTER ──────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--border); background: var(--bg-2);
+  padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.footer-brand { display: flex; align-items: center; gap: 0.6rem; }
+.footer-brand img { height: 24px; }
+.footer-wordmark { font-family: var(--serif); font-size: 0.95rem; color: var(--text-2); }
+.footer-wordmark span { color: var(--accent); }
+.footer-copy { font-size: 0.72rem; color: var(--text-3); letter-spacing: 0.04em; }
+.footer-links { display: flex; gap: 2rem; list-style: none; }
+.footer-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-3); transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
 
-    /* Glowing border animation */
-    .card:hover {
-      box-shadow: 0 0 15px var(--purple), 0 0 30px var(--blue);
-    }
+/* ── SCROLL ANIMATIONS ───────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.75s var(--ease), transform 0.75s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal-delay-1 { transition-delay: 0.08s; }
+.reveal-delay-2 { transition-delay: 0.16s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
 
-    .hero {
-      position: relative;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      border: 4px solid transparent;
-      border-radius: 40px;
-      animation: heroGlow 4s ease-in-out infinite;
-      pointer-events: none;
-    }
-    @keyframes heroGlow {
-      0% { box-shadow: 0 0 10px var(--purple); }
-      50% { box-shadow: 0 0 25px var(--blue); }
-      100% { box-shadow: 0 0 10px var(--green); }
-    }
+/* ── MOBILE BASE FIXES ───────────────────────────── */
+/* Prevent iOS tap highlight */
+a, button { -webkit-tap-highlight-color: transparent; }
+/* Prevent iOS input zoom (must be 16px+) */
+input, textarea, select { font-size: 1rem !important; }
+/* Prevent text overflow on small screens */
+h1, h2, h3, p { overflow-wrap: break-word; word-break: break-word; }
+/* Smooth momentum scrolling on iOS */
+html { -webkit-overflow-scrolling: touch; }
 
-    /* Parallax scrolling */
-    .hero {
-      background-attachment: fixed;
-    }
+/* ── TABLET (≤ 1024px) ───────────────────────────── */
+@media (max-width: 1024px) {
+  .wrap { padding: 0 2rem; }
+  .nav-inner { padding: 1.2rem 2rem; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-hamburger { display: flex; }
 
-    /* Back to top button */
-    #topBtn {
-      position: fixed;
-      bottom: 30px;
-      right: 20px;
-      padding: 12px 18px;
-      background: var(--blue);
-      color: white;
-      font-size: 18px;
-      border-radius: 50px;
-      cursor: pointer;
-      display: none;
-      z-index: 9999;
-      transition: 0.3s;
-    }
-    #topBtn:hover {
-      background: var(--purple);
-    }
+  /* Hero */
+  #hero { padding-top: 6rem; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; padding: 3rem 2rem 2rem; gap: 2.5rem; }
+  .hero-visual { height: 260px; }
+  .hero-trust { padding: 1.5rem 2rem 2.5rem; gap: 1.25rem 2rem; flex-wrap: wrap; }
 
-  /* Cinematic fade-in delays */
-    section:nth-of-type(1){animation-delay:0.2s}
-    section:nth-of-type(2){animation-delay:0.4s}
-    section:nth-of-type(3){animation-delay:0.6s}
-    section:nth-of-type(4){animation-delay:0.8s}
-    section:nth-of-type(5){animation-delay:1s}
+  /* All section padding reduced */
+  #services, #sectors, #why, #approach, #cases, #testimonials, #about, #contact { padding: 5rem 0; }
 
-    /* Soft parallax on service cards */
-    .card { transition: transform 0.4s ease, box-shadow 0.4s ease; }
-    .card:hover { transform: translateY(-12px) scale(1.02); }
+  /* Services */
+  .section-header { grid-template-columns: 1fr; gap: 1.5rem; margin-bottom: 3rem; }
+  .service-item { grid-template-columns: 2.5rem 1fr; gap: 1.5rem; padding: 2rem 0; }
+  .service-desc { grid-column: 2; }
+  /* Disable the negative-margin hover effect on tablet/mobile */
+  .service-item:hover { margin: 0 !important; padding-left: 0 !important; padding-right: 0 !important; background: var(--accent-tint); }
 
-    /* Animated SVG wave footer */
-    .wave-container { position: relative; height: 120px; overflow: hidden; }
-    .wave-container svg { position: absolute; bottom: 0; width: 100%; animation: waveMove 8s linear infinite; }
-    @keyframes waveMove { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  /* Sectors */
+  .sectors-grid { grid-template-columns: repeat(2, 1fr); }
 
-    /* Animated SVG section dividers */
-    .svg-divider { width:100%; margin:40px 0; }
+  /* Why */
+  .why-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .why-left { position: static; }
 
-  /* Auto light/dark mode based on system */
-    @media (prefers-color-scheme: dark) { body { --bg:#1a1a1a; --text:#e6e6e6; --card-bg:#2a2a2a;} }
+  /* Approach */
+  .approach-steps { grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
+  .approach-steps::before { display: none; }
+  .step { padding-right: 0; }
 
-    /* Glassmorphism cards */
-    .card { backdrop-filter: blur(10px); background: rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.3);} 
-    body.dark .card { background: rgba(40,40,40,0.35); }
+  /* Case studies */
+  .cases-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .case-card.span-7, .case-card.span-5, .case-card.span-6 { grid-column: span 1; }
+  .cases-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
 
-    /* Page load intro */
-    #introMask {position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;display:flex;align-items:center;justify-content:center;color:white;font-size:32px;animation:introFade 2s forwards;}
-    @keyframes introFade { 0%{opacity:1;} 100%{opacity:0;visibility:hidden;} }
+  /* Testimonials */
+  .testi-grid { grid-template-columns: 1fr; gap: 1.25rem; }
 
-    /* Chatbot floating button */
-    #chatBtn {position:fixed;bottom:90px;right:20px;padding:14px 20px;background:var(--purple);color:white;border-radius:50px;font-size:16px;cursor:pointer;z-index:9999;box-shadow:0 0 12px var(--blue);}    
-    #chatWindow {display:none;position:fixed;bottom:150px;right:20px;width:280px;height:350px;background:var(--card-bg);border-radius:12px;box-shadow:0 0 20px rgba(0,0,0,0.4);padding:15px;z-index:9999;}
+  /* About */
+  .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .about-left-inner { position: static; flex-direction: row; flex-wrap: wrap; align-items: center; }
+  .about-credentials { grid-template-columns: repeat(2, 1fr); }
 
-    /* Typing animation */
-    .typed-text { border-right:3px solid white; white-space:nowrap; overflow:hidden; width:0; animation:typing 4s steps(40) forwards, blink .7s infinite; }
-    @keyframes typing { from{width:0;} to{width:100%;} }
-    @keyframes blink { 50%{border-color:transparent;} }
+  /* Contact */
+  .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
 
-    /* Scroll-jacking sections */
-    html { scroll-behavior: smooth; }
-    .snap { scroll-snap-align: start; }
-    body { /* scroll snap removed */ }
+  /* Footer */
+  footer { padding: 2.5rem 2rem; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+}
 
-  </style>
-</head>
+/* ── PHONE (≤ 640px) ─────────────────────────────── */
+@media (max-width: 640px) {
+  .wrap { padding: 0 1.25rem; }
+  .nav-inner { padding: 1rem 1.25rem; }
+
+  /* Typography scale-down */
+  h1 { font-size: clamp(2rem, 7vw, 2.4rem); }
+  h2 { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+
+  /* All section padding */
+  #services, #sectors, #why, #approach, #cases, #testimonials, #about, #contact { padding: 4rem 0; }
+
+  /* Hero */
+  #hero { padding-top: 5rem; }
+  .hero-inner { padding: 2.5rem 1.25rem 1.5rem; gap: 2rem; }
+  .hero-visual { display: none; } /* hide network SVG on small phones - saves vertical space */
+  .hero-sub { font-size: 0.95rem; max-width: 100%; }
+  .hero-ctas { flex-direction: column; align-items: flex-start; }
+  .hero-ctas .btn { width: 100%; justify-content: center; }
+  .hero-trust { padding: 1.25rem 1.25rem 2rem; gap: 1rem; }
+  .hero-trust-item { font-size: 0.7rem; }
+
+  /* Nav mobile overlay */
+  .nav-mobile-overlay { padding: 5rem 2rem 3rem; justify-content: flex-start; overflow-y: auto; }
+  .nav-mobile-overlay a { font-size: 1.75rem; }
+
+  /* Services */
+  .service-item { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.75rem 0; }
+  .service-num { display: inline-block; margin-bottom: 0.25rem; }
+  .service-name { font-size: 1.3rem; }
+  .service-desc { grid-column: 1; padding-top: 0; }
+
+  /* Sectors */
+  .sectors-grid { grid-template-columns: 1fr; }
+  .sector-card { padding: 2rem 1.5rem; }
+
+  /* Why */
+  .why-title { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+  .why-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .why-item-num { display: none; }
+
+  /* Approach */
+  .approach-steps { grid-template-columns: 1fr; gap: 2rem; }
+  .step-num { width: 3rem; height: 3rem; font-size: 0.9rem; }
+
+  /* Cases */
+  .case-vis { height: 130px; }
+  .case-body { padding: 1.25rem; }
+
+  /* Testimonials */
+  .testi-card { padding: 1.75rem; }
+  .testi-quote { font-size: 1.05rem; }
+
+  /* About */
+  .about-left-inner { flex-direction: column; align-items: flex-start; }
+  .about-right .about-heading { font-size: clamp(1.7rem, 6vw, 2.2rem); }
+  .about-credentials { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+
+  /* Contact */
+  .contact-heading { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+  .form-footer { flex-direction: column; align-items: stretch; }
+  .form-footer .btn { width: 100%; justify-content: center; }
+  .contact-reassure { margin-top: 2rem; }
+
+  /* Footer */
+  footer { padding: 2rem 1.25rem; }
+  .footer-links { flex-wrap: wrap; gap: 1.25rem; }
+
+  /* Ensure all tap targets are min 44px */
+  .btn { min-height: 48px; }
+  .theme-btn { width: 44px; height: 44px; }
+  .nav-hamburger { padding: 8px; }
+  .nav-hamburger span { width: 24px; }
+}
+</style>
 </head>
 <body>
 
-  <header>
-    <img src="KrisolLtd LOGO3.png" alt="Krisol Ltd Logo" style="max-width:140px;" />
-    <span class="menu-toggle" onclick="toggleMenu()">☰</span>
-    <nav>
-      <span class="toggle" onclick="toggleMode()">🌙 Dark Mode</span>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#industries">Industries</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <section id="home" class="hero" style="padding:80px 20px; background:white; border-bottom:none; background-attachment:initial;">
-    <h1 class="gradient-text" style="font-size:36px; margin-bottom:10px;">Krisol Ltd</h1>
-    <p style="font-size:20px; color:#555; margin-top:0;">Bringing the World Closer Through Technology</p>
-  </section>
-
-  <div class="svg-divider">
-<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
-</div>
-  <section id="about" class="snap">
-    <h2>About Krisol Ltd</h2>
-    <p>
-      Krisol Ltd delivers high-end IT consultancy specialising in Network Architecture, Cloud
-      Networking, Cyber-secure Enterprise Infrastructure and full-lifecycle delivery. With over
-      two decades of experience supporting Government, Defence, Finance, Manufacturing and
-      Global IT Service Providers, we deliver secure, robust and scalable solutions tailored to
-      mission-critical environments.
-    </p>
-  </section>
-
-  <div class="svg-divider">
-<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
-</div>
-  <section id="services" class="snap">
-    <h2>Services</h2>
-    <div class="grid">
-      <div class="card"><lottie-player class="lottie-icon" src="https://assets1.lottiefiles.com/packages/lf20_2glqweqs.json" background="transparent" speed="1" loop autoplay></lottie-player>$1</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</strong><br/>Technical leadership, CAB/TDA engagement, documentation, BoM creation and stakeholder alignment.</div>
+<!-- ── NAV ── -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd"
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <svg class="nav-mark" style="display:none" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="7" cy="14" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+        <circle cx="21" cy="7" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+        <circle cx="21" cy="21" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+        <line x1="10" y1="12.5" x2="18" y2="8.5" stroke="var(--accent)" stroke-width="1"/>
+        <line x1="10" y1="15.5" x2="18" y2="19.5" stroke="var(--accent)" stroke-width="1"/>
+      </svg>
+      <span class="nav-wordmark">Krisol<span class="dot">.</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#sectors">Sectors</a></li>
+      <li><a href="#cases">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+        <svg id="iconSun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="display:none">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="iconMoon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <a href="#contact" class="btn btn-primary nav-cta">Book a consultation</a>
     </div>
-  </section>
+    <button class="nav-hamburger" id="hamburger" onclick="document.getElementById('mobileNav').classList.add('open')" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 
-  <div class="svg-divider">
-<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+<div class="nav-mobile-overlay" id="mobileNav">
+  <button class="nav-close" onclick="document.getElementById('mobileNav').classList.remove('open')">✕</button>
+  <a href="#services" onclick="document.getElementById('mobileNav').classList.remove('open')">Services</a>
+  <a href="#sectors" onclick="document.getElementById('mobileNav').classList.remove('open')">Sectors</a>
+  <a href="#cases" onclick="document.getElementById('mobileNav').classList.remove('open')">Work</a>
+  <a href="#about" onclick="document.getElementById('mobileNav').classList.remove('open')">About</a>
+  <a href="#contact" onclick="document.getElementById('mobileNav').classList.remove('open')">Contact</a>
 </div>
-  <section id="industries" class="snap">
-    <h2>Industries We Serve</h2>
 
-    <details class="industry-item"><summary>Government & Defence</summary><p>Experience with MoD, SC-cleared roles, secure architectures, datacentre migrations and cyber-hardened environments.</p></details>
-    <details class="industry-item"><summary>Finance & Banking</summary><p>Delivered FCA-grade secure networks, firewall governance, datacentre upgrades and cloud integrations.</p></details>
-    <details class="industry-item"><summary>Manufacturing & Industrial</summary><p>Designed low-latency, resilient enterprise networks supporting industrial automation and secure remote access.</p></details>
-    <details class="industry-item"><summary>Global IT Service Providers</summary><p>Architected scalable multi-vendor solutions including firewalls, SD-WAN, cloud networks and global VPN fabrics.</p></details>
-
-    <div class="grid">
-      <div class="card">Government & Defence</div>
-      <div class="card">Finance & Banking</div>
-      <div class="card">Manufacturing & Industrial</div>
-      <div class="card">Global IT Service Providers</div>
-    </div>
-  </section>
-
-  <section id="case-studies">
-    <h2>Case Studies & Experience</h2>
-
-    <div class="slider" id="slider">
-      <div class="slides" id="slides">
-        <div class="slide"><h3>MoD – Next Generation Communication Network</h3><p>Produced HLDs, roadmaps and architectural governance for Defence Digital. Peer-reviewed cross-domain architectures.</p></div>
-        <div class="slide"><h3>Magnox – Azure Migration & Network Modernisation</h3><p>Designed cloud-first network, VPN gateways, firewall upgrades and multi-vendor site-to-site integrations.</p></div>
-        <div class="slide"><h3>FCA – Secure Datacentre Transformation</h3><p>Delivered designs for ExaCC, VDI migration, SIEM upgrades and secure firewalls (Checkpoint, Palo Alto, Cisco).</p></div>
-        <div class="slide"><h3>HM Passport Office – AWS Integrated Sites</h3><p>Architected two new sites, full network lifecycle delivery, firewall modernisation and secure cloud connectivity.</p></div>
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-label label reveal">Specialist IT Consultancy · London, UK</div>
+      <h1 class="hero-h1 reveal reveal-delay-1">
+        Architecture, security, and transformation — for organisations where <em>failure is not an option.</em>
+      </h1>
+      <p class="hero-sub reveal reveal-delay-2">
+        Krisol Ltd is a senior-led IT consultancy with over two decades of experience designing, securing, and modernising critical infrastructure for Government, Finance, Manufacturing, and global service providers.
+      </p>
+      <div class="hero-ctas reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary">Book a consultation <span class="arrow">→</span></a>
+        <a href="#services" class="btn btn-outline">View services</a>
       </div>
     </div>
-
-    <div class="slider-buttons">
-      <button onclick="prevSlide()">⟨ Prev</button>
-      <button onclick="nextSlide()">Next ⟩</button>
+    <div class="hero-visual reveal reveal-delay-2">
+      <!-- Abstract network topology SVG -->
+      <svg viewBox="0 0 440 380" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- Grid dots -->
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <circle cx="20" cy="20" r="1" fill="var(--border)" opacity="0.8"/>
+          </pattern>
+        </defs>
+        <rect width="440" height="380" fill="url(#grid)"/>
+        <!-- Connection lines -->
+        <line x1="220" y1="190" x2="100" y2="100" stroke="var(--accent)" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="190" x2="340" y2="100" stroke="var(--accent)" stroke-width="1" opacity="0.3"/>
+        <line x1="220" y1="190" x2="100" y2="280" stroke="var(--accent)" stroke-width="1" opacity="0.25"/>
+        <line x1="220" y1="190" x2="340" y2="280" stroke="var(--accent)" stroke-width="1" opacity="0.25"/>
+        <line x1="220" y1="190" x2="60" y2="190" stroke="var(--accent)" stroke-width="1" opacity="0.2"/>
+        <line x1="220" y1="190" x2="380" y2="190" stroke="var(--accent)" stroke-width="1" opacity="0.2"/>
+        <line x1="220" y1="190" x2="220" y2="50" stroke="var(--accent)" stroke-width="1" opacity="0.2"/>
+        <line x1="220" y1="190" x2="220" y2="330" stroke="var(--accent)" stroke-width="1" opacity="0.2"/>
+        <!-- Secondary connections -->
+        <line x1="100" y1="100" x2="340" y2="100" stroke="var(--accent)" stroke-width="0.75" opacity="0.15"/>
+        <line x1="100" y1="280" x2="340" y2="280" stroke="var(--accent)" stroke-width="0.75" opacity="0.15"/>
+        <line x1="100" y1="100" x2="100" y2="280" stroke="var(--accent)" stroke-width="0.75" opacity="0.12"/>
+        <line x1="340" y1="100" x2="340" y2="280" stroke="var(--accent)" stroke-width="0.75" opacity="0.12"/>
+        <!-- Outer nodes -->
+        <circle cx="100" cy="100" r="5" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="340" cy="100" r="5" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1.5" opacity="0.6"/>
+        <circle cx="100" cy="280" r="5" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="340" cy="280" r="5" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="60" cy="190" r="4" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+        <circle cx="380" cy="190" r="4" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+        <circle cx="220" cy="50" r="4" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+        <circle cx="220" cy="330" r="4" fill="var(--bg-2)" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+        <!-- Central node -->
+        <circle cx="220" cy="190" r="14" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.5" opacity="0.9"/>
+        <circle cx="220" cy="190" r="5" fill="var(--accent)" opacity="0.85"/>
+        <!-- Pulse ring -->
+        <circle cx="220" cy="190" r="28" stroke="var(--accent)" stroke-width="0.75" opacity="0.2" stroke-dasharray="4 4"/>
+      </svg>
     </div>
-  </section>
+  </div>
+  <div class="hero-trust reveal">
+    <div class="hero-trust-item">20+ Years Experience</div>
+    <div class="hero-trust-item">SC-Cleared Capability</div>
+    <div class="hero-trust-item">HLD Through to Delivery</div>
+    <div class="hero-trust-item">Vendor-Neutral Advice</div>
+    <div class="hero-trust-item">Government &amp; Enterprise</div>
+  </div>
+</section>
 
-  <div class="svg-divider">
-<svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg"><path fill="url(#grad1)" d="M0,0 C300,80 600,20 900,60 C1200,100 1440,20 1440,20 L1440,00 L0,0 Z"></path><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--orange)"/><stop offset="50%" stop-color="var(--purple)"/><stop offset="100%" stop-color="var(--blue)"/></linearGradient></defs></svg>
+<!-- ── MARQUEE ── -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Network Architecture</span>
+    <span class="marquee-item">Cloud Transformation</span>
+    <span class="marquee-item">Cybersecurity</span>
+    <span class="marquee-item">Azure &amp; AWS</span>
+    <span class="marquee-item">SD-WAN</span>
+    <span class="marquee-item">Enterprise Infrastructure</span>
+    <span class="marquee-item">Datacentre Design</span>
+    <span class="marquee-item">Firewall Governance</span>
+    <span class="marquee-item">HLD / LLD</span>
+    <span class="marquee-item">Automation</span>
+    <span class="marquee-item">Technical Assurance</span>
+    <span class="marquee-item">Network Architecture</span>
+    <span class="marquee-item">Cloud Transformation</span>
+    <span class="marquee-item">Cybersecurity</span>
+    <span class="marquee-item">Azure &amp; AWS</span>
+    <span class="marquee-item">SD-WAN</span>
+    <span class="marquee-item">Enterprise Infrastructure</span>
+    <span class="marquee-item">Datacentre Design</span>
+    <span class="marquee-item">Firewall Governance</span>
+    <span class="marquee-item">HLD / LLD</span>
+    <span class="marquee-item">Automation</span>
+    <span class="marquee-item">Technical Assurance</span>
+  </div>
 </div>
-  <section id="contact" class="snap">
-    <h2>Contact Us</h2>
-    <form action="https://formsubmit.co/info@krisol.co.uk" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-    <p style="text-align:center; margin-top:20px;">
-      Email: <strong>info@krisol.co.uk</strong><br/>
-      </p>
-  </section>
 
-  <div class="mobile-contact"><a href="mailto:info@krisol.co.uk" style="color:white;text-decoration:none;">📩 Contact Now</a></div>
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-header">
+      <div>
+        <div class="label reveal" style="margin-bottom:1.2rem">What we deliver</div>
+        <h2 class="reveal reveal-delay-1">Services built<br>around <em class="serif-em">outcomes.</em></h2>
+      </div>
+      <div class="section-header-right reveal reveal-delay-1">
+        <p>We don't sell technology — we solve problems. Every engagement begins with your operational context and ends with measurable results. From initial architecture through to full lifecycle delivery, we own the technical work so your teams don't have to.</p>
+      </div>
+    </div>
+    <div class="service-list">
 
-  <div class="wave-container">
-<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C300,100 900,20 1200,80 V120 H0 V0 Z" fill="var(--blue)"></path></svg>
-</div>
-<div id="introMask">Krisol Ltd</div>
-<div id="chatWindow">Ask Krisol: <br><br><em>This can be linked to a real chatbot later.</em></div>
-<div id="chatBtn" onclick="toggleChat()">💬 Ask Krisol</div>
+      <div class="service-item reveal">
+        <div class="service-num">01</div>
+        <div class="service-name">Network Architecture<br>&amp; Transformation</div>
+        <p class="service-desc">Enterprise network design from strategy through to delivery. HLD and LLD documentation, CAB/TDA engagement, multi-vendor implementation, BoM creation, and full lifecycle ownership — including peer review and design authority coordination.</p>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">02</div>
+        <div class="service-name">Cloud &amp; Infrastructure<br>Consulting</div>
+        <p class="service-desc">Cloud-first architecture for Azure and AWS environments. Hybrid connectivity, VPN gateway design, migration planning, and infrastructure modernisation at enterprise scale. We design for resilience, security, and operational simplicity — not just cloud-native fashion.</p>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">03</div>
+        <div class="service-name">Cybersecurity &amp;<br>Risk Reduction</div>
+        <p class="service-desc">Firewall governance, SIEM design and implementation, and compliance-aligned security architecture across Checkpoint, Palo Alto, and Cisco platforms. Security embedded from the first design decision, not bolted on at the end.</p>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">04</div>
+        <div class="service-name">Automation &amp;<br>Operational Efficiency</div>
+        <p class="service-desc">Network and infrastructure automation that eliminates configuration drift, reduces manual overhead, and enables consistent, repeatable operations. We identify where automation delivers real value — and build it to last.</p>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">05</div>
+        <div class="service-name">Technical Assurance &amp;<br>Design Review</div>
+        <p class="service-desc">Independent architectural review and peer assurance. We verify designs against requirements, stress-test assumptions, and ensure solutions are fit for purpose before commitment. Particularly valuable for regulated environments and high-stakes programmes.</p>
+      </div>
+
+      <div class="service-item reveal">
+        <div class="service-num">06</div>
+        <div class="service-name">Managed Consulting &amp;<br>Ongoing Advisory</div>
+        <p class="service-desc">Retained senior advisory for IT directors, CIOs, and programme teams navigating complex technology decisions. We provide continuity, institutional memory, and hands-on support across the full technology lifecycle.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTORS ── -->
+<section id="sectors">
+  <div class="wrap">
+    <div class="sectors-header">
+      <div class="label reveal" style="margin-bottom:1.2rem">Sectors</div>
+      <h2 class="reveal reveal-delay-1">Trusted across<br><em class="serif-em">critical industries.</em></h2>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card reveal">
+        <div class="sector-num">01</div>
+        <h3 class="sector-name">Government &amp; Defence</h3>
+        <p class="sector-desc">SC-cleared delivery for MoD, Defence Digital, and public sector programmes. Secure architectures, datacentre migrations, and cyber-hardened infrastructure for environments where security is non-negotiable.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-1">
+        <div class="sector-num">02</div>
+        <h3 class="sector-name">Finance &amp; Banking</h3>
+        <p class="sector-desc">FCA-grade secure networks, firewall governance, and compliance-aligned design. Datacentre upgrades and cloud integration for regulated financial organisations that cannot afford downtime or data exposure.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-2">
+        <div class="sector-num">03</div>
+        <h3 class="sector-name">Manufacturing &amp; Industrial</h3>
+        <p class="sector-desc">Resilient, low-latency networks for operational technology environments. Secure remote access, industrial automation connectivity, and enterprise networking for distributed manufacturing sites.</p>
+      </div>
+      <div class="sector-card reveal reveal-delay-3">
+        <div class="sector-num">04</div>
+        <h3 class="sector-name">Global IT Service Providers</h3>
+        <p class="sector-desc">Scalable multi-vendor solutions — next-generation firewalls, SD-WAN, cloud network fabrics, and global VPN architectures — for Tier 1 technology organisations requiring architectural depth and delivery rigour.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── WHY US ── -->
+<section id="why">
+  <div class="wrap">
+    <div class="why-inner">
+      <div class="why-left">
+        <div class="why-eyebrow label reveal">Why Krisol</div>
+        <h2 class="why-title reveal reveal-delay-1">Senior expertise.<br><em class="serif-em">No layers<br>in between.</em></h2>
+        <p class="why-intro reveal reveal-delay-2">We are a boutique practice. That means the people who scope your engagement are the people who deliver it — bringing two decades of hard-won experience directly to your programme.</p>
+      </div>
+      <div class="why-list">
+        <div class="why-item reveal">
+          <div class="why-item-num">i.</div>
+          <div>
+            <div class="why-item-title">Senior-level engagement throughout</div>
+            <p class="why-item-body">Every engagement is led by principals with decades of hands-on experience. We do not delegate complex work to junior staff. What you scope is what you get.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-item-num">ii.</div>
+          <div>
+            <div class="why-item-title">Vendor-neutral advice</div>
+            <p class="why-item-body">We are not resellers, VARs, or tied to any technology vendor. Our recommendations are based on your requirements, not our commercial relationships.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-item-num">iii.</div>
+          <div>
+            <div class="why-item-title">Secure by design</div>
+            <p class="why-item-body">Security is embedded from the first architecture decision. We don't retrofit security to existing designs — we build it into every layer from the outset.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-item-num">iv.</div>
+          <div>
+            <div class="why-item-title">Strategy through to delivery</div>
+            <p class="why-item-body">We bridge the gap between strategic planning and technical execution. We produce the documentation, engage the governance bodies, and see the work through to completion.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-item-num">v.</div>
+          <div>
+            <div class="why-item-title">Clear documentation &amp; governance</div>
+            <p class="why-item-body">Every engagement produces structured, maintainable documentation. CAB submissions, HLDs, LLDs, BoMs, and runbooks — written to the standard your organisation actually requires.</p>
+          </div>
+        </div>
+        <div class="why-item reveal">
+          <div class="why-item-num">vi.</div>
+          <div>
+            <div class="why-item-title">Automation-first thinking</div>
+            <p class="why-item-body">We design with automation in mind from day one — reducing operational burden, eliminating human error, and building infrastructure that scales without proportional headcount growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── DELIVERY APPROACH ── -->
+<section id="approach">
+  <div class="wrap">
+    <div class="approach-header">
+      <div class="label reveal" style="margin-bottom:1.2rem">Delivery approach</div>
+      <h2 class="reveal reveal-delay-1">How we <em class="serif-em">work.</em></h2>
+    </div>
+    <div class="approach-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-name">Discover</div>
+        <p class="step-desc">We begin with a structured discovery — understanding your environment, constraints, risk profile, and objectives before proposing any solution.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">2</div>
+        <div class="step-name">Design</div>
+        <p class="step-desc">Architecture and detailed design produced with full documentation — HLD, LLD, BoM, and governance artefacts tailored to your organisation's standards.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">3</div>
+        <div class="step-name">Deploy</div>
+        <p class="step-desc">Hands-on implementation with senior oversight. We coordinate vendors, manage change control, and maintain accountability throughout delivery.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">4</div>
+        <div class="step-name">Sustain</div>
+        <p class="step-desc">Ongoing advisory, knowledge transfer, and operational support — ensuring your investment performs as designed long after initial delivery.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CASE STUDIES ── -->
+<section id="cases">
+  <div class="wrap">
+    <div class="cases-header">
+      <div>
+        <div class="label reveal" style="margin-bottom:1rem">Selected work</div>
+        <h2 class="reveal reveal-delay-1">Case <em class="serif-em">studies.</em></h2>
+      </div>
+      <a href="#contact" class="btn btn-outline reveal">Start a conversation →</a>
+    </div>
+    <div class="cases-grid">
+
+      <div class="case-card span-7 reveal">
+        <div class="case-vis" style="background:var(--bg-3)">
+          <svg width="320" height="140" viewBox="0 0 320 140" fill="none" aria-hidden="true">
+            <line x1="30" y1="110" x2="80" y2="60" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+            <line x1="80" y1="60" x2="160" y2="80" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+            <line x1="160" y1="80" x2="240" y2="40" stroke="var(--accent)" stroke-width="1.5" opacity="0.5"/>
+            <line x1="240" y1="40" x2="290" y2="55" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+            <circle cx="30" cy="110" r="4" fill="var(--accent)" opacity="0.35"/>
+            <circle cx="80" cy="60" r="4" fill="var(--accent)" opacity="0.45"/>
+            <circle cx="160" cy="80" r="6" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.5" opacity="0.7"/>
+            <circle cx="240" cy="40" r="5" fill="var(--accent)" opacity="0.6"/>
+            <circle cx="290" cy="55" r="4" fill="var(--accent)" opacity="0.4"/>
+            <line x1="0" y1="120" x2="320" y2="120" stroke="var(--border)" stroke-width="0.75" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="case-body">
+          <p class="case-sector">Government &amp; Defence · Architecture</p>
+          <p class="case-client">Ministry of Defence</p>
+          <h3 class="case-title">Next Generation Communication Network</h3>
+          <p class="case-desc">Produced HLDs, strategic roadmaps, and architectural governance documentation for Defence Digital. Peer-reviewed cross-domain architectures to MoD standards across highly sensitive, classified environments.</p>
+        </div>
+      </div>
+
+      <div class="case-card span-5 reveal reveal-delay-1">
+        <div class="case-vis" style="background:var(--bg-3)">
+          <svg width="220" height="140" viewBox="0 0 220 140" fill="none" aria-hidden="true">
+            <rect x="20" y="55" width="30" height="65" stroke="var(--accent)" stroke-width="1" opacity="0.35"/>
+            <rect x="65" y="35" width="30" height="85" stroke="var(--accent)" stroke-width="1" fill="var(--accent-tint)" opacity="0.6"/>
+            <rect x="110" y="15" width="30" height="105" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent-tint)"/>
+            <rect x="160" y="40" width="25" height="80" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+          </svg>
+        </div>
+        <div class="case-body">
+          <p class="case-sector">Energy · Cloud</p>
+          <p class="case-client">Magnox</p>
+          <h3 class="case-title">Azure Migration &amp; Network Modernisation</h3>
+          <p class="case-desc">Cloud-first network design, VPN gateways, firewall upgrades and multi-vendor site-to-site integration across a regulated energy environment.</p>
+        </div>
+      </div>
+
+      <div class="case-card span-6 reveal">
+        <div class="case-vis" style="background:var(--bg-3)">
+          <svg width="250" height="140" viewBox="0 0 250 140" fill="none" aria-hidden="true">
+            <circle cx="125" cy="70" r="45" stroke="var(--accent)" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.35"/>
+            <circle cx="125" cy="70" r="28" stroke="var(--accent)" stroke-width="1" opacity="0.5"/>
+            <circle cx="125" cy="70" r="8" fill="var(--accent-tint)" stroke="var(--accent)" stroke-width="1.5" opacity="0.8"/>
+            <line x1="125" y1="25" x2="125" y2="12" stroke="var(--accent)" stroke-width="0.75" opacity="0.5"/>
+            <line x1="170" y1="70" x2="183" y2="70" stroke="var(--accent)" stroke-width="0.75" opacity="0.5"/>
+            <line x1="80" y1="70" x2="67" y2="70" stroke="var(--accent)" stroke-width="0.75" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="case-body">
+          <p class="case-sector">Finance · Cybersecurity</p>
+          <p class="case-client">Financial Conduct Authority</p>
+          <h3 class="case-title">Secure Datacentre Transformation</h3>
+          <p class="case-desc">ExaCC design, VDI migration, SIEM upgrades, and secure firewalls (Checkpoint, Palo Alto, Cisco) delivered to FCA compliance standards.</p>
+        </div>
+      </div>
+
+      <div class="case-card span-6 reveal reveal-delay-1">
+        <div class="case-vis" style="background:var(--bg-3)">
+          <svg width="250" height="140" viewBox="0 0 250 140" fill="none" aria-hidden="true">
+            <rect x="20" y="30" width="55" height="38" rx="2" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+            <rect x="175" y="30" width="55" height="38" rx="2" stroke="var(--accent)" stroke-width="1" opacity="0.4"/>
+            <rect x="97" y="72" width="56" height="38" rx="2" stroke="var(--accent)" stroke-width="1.5" fill="var(--accent-tint)" opacity="0.9"/>
+            <path d="M75 49 L97 91" stroke="var(--accent)" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.5"/>
+            <path d="M175 49 L153 91" stroke="var(--accent)" stroke-width="0.75" stroke-dasharray="3 3" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="case-body">
+          <p class="case-sector">Government · Infrastructure</p>
+          <p class="case-client">HM Passport Office</p>
+          <h3 class="case-title">AWS-Integrated Site Build</h3>
+          <p class="case-desc">Two new sites architected from scratch. Full network lifecycle delivery, firewall modernisation, and secure AWS cloud connectivity for the Home Office.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="testi-header">
+      <div class="label reveal" style="margin-bottom:1.2rem">Client feedback</div>
+      <h2 class="reveal reveal-delay-1">What clients <em class="serif-em">say.</em></h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <p class="testi-quote">The technical depth Krisol brought to our network design programme was exceptional. They navigated our governance process with precision and delivered documentation that genuinely held up to scrutiny at design authority level.</p>
+        <div class="testi-attr">
+          <div class="testi-name">Head of Infrastructure</div>
+          <div class="testi-role">Central Government Department</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-1">
+        <p class="testi-quote">What set them apart was the combination of strategic thinking and hands-on delivery. They designed the architecture, wrote the BoMs, engaged the vendors, and saw it through. That continuity made a real difference to the outcome.</p>
+        <div class="testi-attr">
+          <div class="testi-name">IT Director</div>
+          <div class="testi-role">Financial Services Organisation</div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-delay-2">
+        <p class="testi-quote">Krisol understood our operational constraints from day one. Their cloud migration design was clean, well-documented, and genuinely improved our resilience posture — not just a lift-and-shift exercise dressed up as transformation.</p>
+        <div class="testi-attr">
+          <div class="testi-name">Network Architecture Lead</div>
+          <div class="testi-role">Global IT Service Provider</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-left-inner">
+        <div class="about-logo-wrap">
+          <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" onerror="this.style.display='none'">
+        </div>
+        <div class="label reveal">The firm</div>
+        <div class="about-tags reveal reveal-delay-1">
+          <span class="about-tag">Cisco</span>
+          <span class="about-tag">Palo Alto</span>
+          <span class="about-tag">Checkpoint</span>
+          <span class="about-tag">Azure</span>
+          <span class="about-tag">AWS</span>
+          <span class="about-tag">Juniper</span>
+          <span class="about-tag">SD-WAN</span>
+          <span class="about-tag">SIEM</span>
+          <span class="about-tag">HLD / LLD</span>
+          <span class="about-tag">SC-Cleared</span>
+        </div>
+      </div>
+      <div class="about-right">
+        <h2 class="about-heading reveal">Bringing the<br>world <em class="serif-em">closer</em><br>through technology.</h2>
+        <p class="reveal reveal-delay-1">Krisol Ltd is a specialist IT consultancy founded on the belief that complex technology challenges require senior, experienced practitioners — not managed service templates or junior delivery teams.</p>
+        <p class="reveal reveal-delay-1">With over two decades of hands-on experience across Government, Defence, Finance, Manufacturing, and Global IT Service Providers, we have delivered some of the UK's most technically demanding network architecture, cloud transformation, and security programmes.</p>
+        <p class="reveal reveal-delay-2">We are a small, deliberate practice. We take on engagements where our expertise will make a material difference — and we decline work that we are not the right fit for. That discipline is why our clients return.</p>
+        <div class="about-credentials reveal reveal-delay-2">
+          <div class="cred-item">
+            <div class="cred-item-label">Experience</div>
+            <div class="cred-item-value">20+</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-label">Clearance</div>
+            <div class="cred-item-value">SC</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-label">Approach</div>
+            <div class="cred-item-value">HLD → Live</div>
+          </div>
+          <div class="cred-item">
+            <div class="cred-item-label">Orientation</div>
+            <div class="cred-item-value">Outcomes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="label reveal" style="margin-bottom:1.5rem">Get in touch</div>
+        <h2 class="contact-heading reveal reveal-delay-1">
+          Let's discuss<br>your <em class="serif-em">challenge.</em>
+        </h2>
+        <p class="contact-sub reveal reveal-delay-2">Most engagements begin with a straightforward conversation. We're happy to discuss your situation in confidence — no obligation, no sales process. Just a direct conversation with a senior practitioner.</p>
+        <div class="reveal reveal-delay-3">
+          <div class="contact-detail-row">
+            <span class="contact-detail-label">Email</span>
+            <span class="contact-detail-val"><a href="mailto:info@krisol.co.uk">info@krisol.co.uk</a></span>
+          </div>
+          <div class="contact-detail-row">
+            <span class="contact-detail-label">Website</span>
+            <span class="contact-detail-val"><a href="https://krisol.co.uk">krisol.co.uk</a></span>
+          </div>
+          <div class="contact-detail-row">
+            <span class="contact-detail-label">Service area</span>
+            <span class="contact-detail-val">UK &amp; International</span>
+          </div>
+        </div>
+        <div class="contact-reassure reveal reveal-delay-4">
+          All initial consultations are handled directly by a senior principal. We work on a limited number of engagements at any one time to ensure the quality of attention your programme deserves.
+        </div>
+      </div>
+      <form class="contact-form reveal reveal-delay-1" action="https://formsubmit.co/info@krisol.co.uk" method="POST">
+        <input type="hidden" name="_subject" value="New enquiry from krisol.co.uk">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://krisol.co.uk#contact">
+        <div class="form-wrap">
+          <div class="form-row">
+            <label for="f-name">Full name</label>
+            <input type="text" id="f-name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-row">
+            <label for="f-email">Email address</label>
+            <input type="email" id="f-email" name="email" placeholder="you@organisation.com" required>
+          </div>
+          <div class="form-row">
+            <label for="f-org">Organisation</label>
+            <input type="text" id="f-org" name="organisation" placeholder="Your organisation">
+          </div>
+          <div class="form-row">
+            <label for="f-service">Area of interest</label>
+            <select id="f-service" name="service">
+              <option value="" disabled selected>Select a service</option>
+              <option>Network Architecture &amp; Transformation</option>
+              <option>Cloud &amp; Infrastructure Consulting</option>
+              <option>Cybersecurity &amp; Risk Reduction</option>
+              <option>Automation &amp; Operational Efficiency</option>
+              <option>Technical Assurance &amp; Design Review</option>
+              <option>Managed Consulting &amp; Advisory</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="f-msg">Brief overview</label>
+            <textarea id="f-msg" name="message" placeholder="Describe your requirement or the challenge you're facing..."></textarea>
+          </div>
+        </div>
+        <div class="form-footer">
+          <p class="form-note">Responses within one business day.</p>
+          <button type="submit" class="btn btn-primary">Send enquiry <span class="arrow">→</span></button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
 <footer>
-    © 2025 Krisol Ltd – Bringing the World Closer
-  </footer>
+  <div class="footer-brand">
+    <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" style="height:22px" onerror="this.style.display='none'">
+    <span class="footer-wordmark">Krisol<span>.</span></span>
+  </div>
+  <p class="footer-copy">© 2025 Krisol Ltd. Bringing the World Closer.</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</footer>
 
 <script>
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.2 });
+/* ── NAV SCROLL ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), { passive: true });
 
-    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
+/* ── THEME TOGGLE ── */
+const html = document.documentElement;
+const btn = document.getElementById('themeBtn');
+const sun = document.getElementById('iconSun');
+const moon = document.getElementById('iconMoon');
 
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-      document.querySelector('.toggle').textContent =
-        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-  </script>
-<script>
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.querySelector('nav').classList.toggle('show');
-    }
-
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
-
-    // Light/Dark mode
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-      document.querySelector('.toggle').textContent =
-        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-  </script>
-<script>
-    /* Lightweight Analytics - Page View Counter */
-    fetch('https://api.countapi.xyz/hit/krisol.co.uk/visits')
-      .then(res => res.json())
-      .then(data => console.log('Page views:', data.value));
-
-    // Mobile menu toggle
-    function toggleMenu() {
-      document.querySelector('nav').classList.toggle('show');
-    }
-
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.2 });
-
-    document.querySelectorAll('.animate, section').forEach(el => observer.observe(el));
-
-    // Light/Dark mode
-    function toggleMode() {
-      document.body.classList.toggle('dark');
-      document.querySelector('.toggle').textContent =
-        document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
-    }
-  </script>
-<script>
-    let index = 0;
-    function showSlide(i){ const slides=document.getElementById('slides'); const count=slides.children.length; if(i>=count) index=0; else if(i<0) index=count-1; else index=i; slides.style.transform='translateX('+(-index*100)+'%)'; }
-    function nextSlide(){ showSlide(index+1); }
-    function prevSlide(){ showSlide(index-1); }
-
-    const businessSchema = {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Krisol Ltd",
-      "url": "https://krisol.co.uk",
-      "logo": "https://krisol.co.uk/favicon-512.png",
-      "description": "IT consultancy specialising in Network Architecture, Cloud Networking, Cyber Security and Enterprise Infrastructure.",
-      "email": "info@krisol.co.uk",
-      "address": {"@type": "PostalAddress","addressCountry": "UK"}
-    };
-    const script = document.createElement('script'); script.type='application/ld+json'; script.textContent = JSON.stringify(businessSchema); document.head.appendChild(script);
-  </script>
-<button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'});">⬆</button>
-
-<script>
-  // Show back-to-top button
-  window.addEventListener('scroll', () => {
-    const btn = document.getElementById('topBtn');
-    if (window.scrollY > 300) btn.style.display = 'block';
-    else btn.style.display = 'none';
-  });
-</script>
-<script>
-function toggleChat(){
- const w=document.getElementById('chatWindow');
- w.style.display = w.style.display==='none' ? 'block' : 'none';
+function setTheme(t) {
+  html.setAttribute('data-theme', t);
+  localStorage.setItem('theme', t);
+  if (t === 'dark') { sun.style.display = 'block'; moon.style.display = 'none'; }
+  else { sun.style.display = 'none'; moon.style.display = 'block'; }
 }
+
+// Init from storage or system preference
+const saved = localStorage.getItem('theme');
+const sys = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+setTheme(saved || sys);
+
+btn.addEventListener('click', () => setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+/* ── SCROLL REVEAL ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+
+/* ── SCHEMA ── */
+const s = document.createElement('script'); s.type = 'application/ld+json';
+s.textContent = JSON.stringify({"@context":"https://schema.org","@type":"ProfessionalService","name":"Krisol Ltd","url":"https://krisol.co.uk","email":"info@krisol.co.uk","description":"Specialist IT consultancy for Network Architecture, Cloud, Cybersecurity and Enterprise Infrastructure.","address":{"@type":"PostalAddress","addressCountry":"GB"}});
+document.head.appendChild(s);
 </script>
 </body>
 </html>
