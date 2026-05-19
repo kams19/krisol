@@ -617,16 +617,18 @@ html { -webkit-overflow-scrolling: touch; }
 <nav id="nav">
   <div class="nav-inner">
     <a href="#hero" class="nav-brand">
-      <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd"
-           onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-      <svg class="nav-mark" style="display:none" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="7" cy="14" r="3" stroke="var(--accent)" stroke-width="1.5"/>
-        <circle cx="21" cy="7" r="3" stroke="var(--accent)" stroke-width="1.5"/>
-        <circle cx="21" cy="21" r="3" stroke="var(--accent)" stroke-width="1.5"/>
-        <line x1="10" y1="12.5" x2="18" y2="8.5" stroke="var(--accent)" stroke-width="1"/>
-        <line x1="10" y1="15.5" x2="18" y2="19.5" stroke="var(--accent)" stroke-width="1"/>
-      </svg>
-      <span class="nav-wordmark">Krisol<span class="dot">.</span></span>
+      <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" style="height:38px;width:auto"
+           onerror="this.style.display='none';document.getElementById('navFallback').style.display='flex'">
+      <span id="navFallback" style="display:none;align-items:center;gap:0.6rem">
+        <svg width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="7" cy="14" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="21" cy="7" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+          <circle cx="21" cy="21" r="3" stroke="var(--accent)" stroke-width="1.5"/>
+          <line x1="10" y1="12.5" x2="18" y2="8.5" stroke="var(--accent)" stroke-width="1"/>
+          <line x1="10" y1="15.5" x2="18" y2="19.5" stroke="var(--accent)" stroke-width="1"/>
+        </svg>
+        <span class="nav-wordmark">Krisol<span class="dot">.</span></span>
+      </span>
     </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
@@ -962,9 +964,9 @@ html { -webkit-overflow-scrolling: touch; }
         </div>
         <div class="case-body">
           <p class="case-sector">Government &amp; Defence · Architecture</p>
-          <p class="case-client">Ministry of Defence</p>
+          <p class="case-client">Central Government — Defence &amp; Security</p>
           <h3 class="case-title">Next Generation Communication Network</h3>
-          <p class="case-desc">Produced HLDs, strategic roadmaps, and architectural governance documentation for Defence Digital. Peer-reviewed cross-domain architectures to MoD standards across highly sensitive, classified environments.</p>
+          <p class="case-desc">Produced HLDs, strategic roadmaps, and architectural governance documentation for a major defence programme. Peer-reviewed cross-domain architectures across highly sensitive, classified environments to government security standards.</p>
         </div>
       </div>
 
@@ -979,9 +981,9 @@ html { -webkit-overflow-scrolling: touch; }
         </div>
         <div class="case-body">
           <p class="case-sector">Energy · Cloud</p>
-          <p class="case-client">Magnox</p>
+          <p class="case-client">UK Energy Sector — Nuclear</p>
           <h3 class="case-title">Azure Migration &amp; Network Modernisation</h3>
-          <p class="case-desc">Cloud-first network design, VPN gateways, firewall upgrades and multi-vendor site-to-site integration across a regulated energy environment.</p>
+          <p class="case-desc">Cloud-first network design, VPN gateways, firewall upgrades and multi-vendor site-to-site integration across a regulated nuclear energy environment.</p>
         </div>
       </div>
 
@@ -998,9 +1000,9 @@ html { -webkit-overflow-scrolling: touch; }
         </div>
         <div class="case-body">
           <p class="case-sector">Finance · Cybersecurity</p>
-          <p class="case-client">Financial Conduct Authority</p>
+          <p class="case-client">UK Financial Services Regulator</p>
           <h3 class="case-title">Secure Datacentre Transformation</h3>
-          <p class="case-desc">ExaCC design, VDI migration, SIEM upgrades, and secure firewalls (Checkpoint, Palo Alto, Cisco) delivered to FCA compliance standards.</p>
+          <p class="case-desc">ExaCC design, VDI migration, SIEM upgrades, and secure firewalls (Checkpoint, Palo Alto, Cisco) delivered to FCA-grade compliance standards.</p>
         </div>
       </div>
 
@@ -1016,9 +1018,9 @@ html { -webkit-overflow-scrolling: touch; }
         </div>
         <div class="case-body">
           <p class="case-sector">Government · Infrastructure</p>
-          <p class="case-client">HM Passport Office</p>
+          <p class="case-client">Central Government — Identity &amp; Border Services</p>
           <h3 class="case-title">AWS-Integrated Site Build</h3>
-          <p class="case-desc">Two new sites architected from scratch. Full network lifecycle delivery, firewall modernisation, and secure AWS cloud connectivity for the Home Office.</p>
+          <p class="case-desc">Two new sites architected from scratch. Full network lifecycle delivery, firewall modernisation, and secure AWS cloud connectivity for a Home Office agency.</p>
         </div>
       </div>
 
@@ -1065,7 +1067,8 @@ html { -webkit-overflow-scrolling: touch; }
     <div class="about-inner">
       <div class="about-left-inner">
         <div class="about-logo-wrap">
-          <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" onerror="this.style.display='none'">
+          <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" style="height:44px;width:auto"
+               onerror="this.style.display='none'">
         </div>
         <div class="label reveal">The firm</div>
         <div class="about-tags reveal reveal-delay-1">
@@ -1184,8 +1187,9 @@ html { -webkit-overflow-scrolling: touch; }
 <!-- ── FOOTER ── -->
 <footer>
   <div class="footer-brand">
-    <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" style="height:22px" onerror="this.style.display='none'">
-    <span class="footer-wordmark">Krisol<span>.</span></span>
+    <img src="KrisolLtd%20LOGO3.png" alt="Krisol Ltd" style="height:28px;width:auto"
+         onerror="this.style.display='none';document.getElementById('footFallback').style.display='inline'">
+    <span id="footFallback" style="display:none" class="footer-wordmark">Krisol<span>.</span></span>
   </div>
   <p class="footer-copy">© 2025 Krisol Ltd. Bringing the World Closer.</p>
   <ul class="footer-links">
